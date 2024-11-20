@@ -1019,6 +1019,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1802690552}
     - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
+      propertyPath: pinataParticleSystem
+      value: 
+      objectReference: {fileID: 6536069120966698074, guid: ca2b54850479544abb59903930c54b14, type: 3}
+    - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
       propertyPath: _hitSounds.Array.size
       value: 4
       objectReference: {fileID: 0}

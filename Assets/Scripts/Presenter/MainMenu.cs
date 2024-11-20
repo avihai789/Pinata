@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,15 +10,15 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(AnimatePinataIcon(_pinataIcon, 2));
-        StartCoroutine(AnimatePinataIcon(_StartButton, 1));
+        _ = AnimatePinataIcon(_pinataIcon, 2);
+        _ = AnimatePinataIcon(_StartButton, 1);
     }
 
-    private IEnumerator AnimatePinataIcon(GameObject objectToScale, int scale)
+    private async UniTask AnimatePinataIcon(GameObject objectToScale, int scale)
     {
-        Vector3 initialScale = Vector3.zero;
-        Vector3 finalScale = Vector3.one * scale;
-        float elapsedTime = 0f;
+        var initialScale = Vector3.zero;
+        var finalScale = Vector3.one * scale;
+        var elapsedTime = 0f;
 
         objectToScale.transform.localScale = initialScale;
 
@@ -27,7 +26,7 @@ public class MainMenu : MonoBehaviour
         {
             objectToScale.transform.localScale = Vector3.Lerp(initialScale, finalScale, elapsedTime / animationDuration);
             elapsedTime += Time.deltaTime;
-            yield return null;
+            await UniTask.Yield();
         }
 
         objectToScale.transform.localScale = finalScale;

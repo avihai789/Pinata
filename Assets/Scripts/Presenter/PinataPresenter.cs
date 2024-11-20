@@ -12,11 +12,14 @@ public class PinataView : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip[] _hitSounds;
     [SerializeField] private AudioClip _explodeSound;
-    [SerializeField] Rigidbody2D _pinataRigidbody;
+    [SerializeField] private Rigidbody2D _pinataRigidbody;
+    [SerializeField] private GameObject pinataParticleSystem;
     
     private float pushForce = 10f;
     
     private int pinataSpriteIndex = 0;
+    
+    private bool _isExploded = false;
     
     
     public event Action Click;
@@ -28,6 +31,7 @@ public class PinataView : MonoBehaviour
         {
             PlayHitSound(_explodeSound);
             _pinataImage.sprite = null;
+            _isExploded = true;
             return;
         }
         _pinataImage.sprite = _pinataSprites[pinataSpriteIndex];
@@ -35,20 +39,17 @@ public class PinataView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        OnClick();
+        if (_isExploded) return;
+        var ps = Instantiate(pinataParticleSystem, transform.position, Quaternion.identity);
+        PlayHitSound();
+        PushPinata();
+        Click?.Invoke();
     }
 
     private void PlayHitSound(AudioClip hitSound = null)
     {
         _audioSource.clip = hitSound != null ? hitSound : _hitSounds[Random.Range(0, _hitSounds.Length)];
         _audioSource.Play();
-    }
-    
-    public void OnClick()
-    {
-        PlayHitSound();
-        PushPinata();
-        Click?.Invoke();
     }
     
     private void PushPinata()
