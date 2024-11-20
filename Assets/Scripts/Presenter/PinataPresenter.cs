@@ -14,6 +14,8 @@ public class PinataView : MonoBehaviour
     [SerializeField] private AudioClip _explodeSound;
     [SerializeField] private Rigidbody2D _pinataRigidbody;
     [SerializeField] private GameObject pinataParticleSystem;
+    [SerializeField] private GameObject[] brokenPinataParts;
+    [SerializeField] private GameObject brokenPinataPartsParent;
     
     private float pushForce = 10f;
     
@@ -29,12 +31,27 @@ public class PinataView : MonoBehaviour
         pinataSpriteIndex++;
         if (pinataSpriteIndex >= _pinataSprites.Length)
         {
-            PlayHitSound(_explodeSound);
+            ExplodePinata();
             _pinataImage.sprite = null;
             _isExploded = true;
             return;
         }
         _pinataImage.sprite = _pinataSprites[pinataSpriteIndex];
+    }
+
+    private void ExplodePinata()
+    {
+        PlayHitSound(_explodeSound);
+        brokenPinataPartsParent.SetActive(true);
+        foreach (var part in brokenPinataParts)
+        {
+            var rb = part.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                var randomDirection = Random.insideUnitCircle.normalized;
+                rb.AddForce(randomDirection * pushForce/2, ForceMode2D.Impulse);
+            }
+        }
     }
 
     private void OnMouseDown()
