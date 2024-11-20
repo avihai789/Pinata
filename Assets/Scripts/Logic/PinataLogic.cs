@@ -1,10 +1,10 @@
 
-// Purpose: Contains the logic for the Pinata object.
+// Purpose: Contains the logic for the Piñata object.
 
 
 public class PinataLogic
 {
-    private int _numberOfHits = 0;
+    private int _numberOfHits;
     private PinataState _pinataState;
     private readonly MainPresenter _mainPresenter;
 
@@ -36,7 +36,6 @@ public class PinataLogic
                 break;
             case 10:
                 ChangeState(PinataState.BrokenPinata);
-                Explode();
                 break;
         }
     }
@@ -45,10 +44,5 @@ public class PinataLogic
     {
         _pinataState = pinataState;
         _mainPresenter.PinataStateChanged();
-    }
-
-    private void Explode()
-    {
-        throw new System.NotImplementedException();
     }
 }
