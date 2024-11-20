@@ -1040,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 5de9e2d04a97e44ce94da5e7008b7a50, type: 3}
     - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
       propertyPath: _pinataSprites.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
       propertyPath: _pinataSprites.Array.data[0]
@@ -1053,7 +1053,7 @@ PrefabInstance:
     - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
       propertyPath: _pinataSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: cf9dde005a6a24d6da11d40684c65335, type: 3}
+      objectReference: {fileID: 21300000, guid: 5d4c06f3b1d4e42f29a460f6619f98c2, type: 3}
     - target: {fileID: 6986217559019405831, guid: d9eaa15cdcb8446a984242a54571a455, type: 3}
       propertyPath: brokenPinataParts.Array.size
       value: 3

@@ -2,6 +2,9 @@
 // Purpose: Contains the logic for the Piñata object.
 
 
+using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
+
 public class PinataLogic
 {
     private int _numberOfHits;
@@ -12,6 +15,7 @@ public class PinataLogic
     {
         NewPinata,
         HalfBrokenPinata,
+        AlmostBrokenPinata,
         BrokenPinata
     }
     
@@ -31,13 +35,30 @@ public class PinataLogic
     {
         switch (_numberOfHits)
         {
-            case 5:
+            case 3:
                 ChangeState(PinataState.HalfBrokenPinata);
+                break;
+            case 6:
+                ChangeState(PinataState.AlmostBrokenPinata);
                 break;
             case 10:
                 ChangeState(PinataState.BrokenPinata);
+                ResetGame();
                 break;
         }
+    }
+
+    private void ResetGame()
+    {
+        _numberOfHits = 0;
+        ChangeState(PinataState.NewPinata);
+        _ = OpenTimer(5);
+    }
+
+    private async UniTaskVoid OpenTimer(int seconds)
+    {
+        await UniTask.Delay(seconds * 1000);
+        _mainPresenter.RestartGame();
     }
 
     private void ChangeState(PinataState pinataState)

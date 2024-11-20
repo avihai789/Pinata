@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainPresenter : MonoBehaviour
 {
@@ -22,5 +23,10 @@ public class MainPresenter : MonoBehaviour
     public void PinataStateChanged()
     {
         _pinataView.SetPinataImage();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("EndScene", LoadSceneMode.Additive);
     }
 }
