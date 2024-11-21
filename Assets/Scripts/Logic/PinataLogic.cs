@@ -1,9 +1,7 @@
 
 // Purpose: Contains the logic for the Piñata object.
 
-
 using Cysharp.Threading.Tasks;
-using UnityEngine.SceneManagement;
 
 public class PinataLogic
 {
