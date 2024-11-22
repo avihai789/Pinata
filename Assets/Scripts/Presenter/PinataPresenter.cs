@@ -12,6 +12,7 @@ public class PinataView : MonoBehaviour
     [SerializeField] private Rigidbody2D pinataRigidbody;
     [SerializeField] private GameObject[] brokenPinataParts;
     [SerializeField] private GameObject pinataParticleSystem;
+    [SerializeField] private GameObject prizesParticleSystem;
     [SerializeField] private GameObject brokenPinataPartsParent;
 
     private const float PushForce = 10f;
@@ -41,11 +42,12 @@ public class PinataView : MonoBehaviour
                 rb.AddForce(randomDirection * PushForce/2, ForceMode2D.Impulse);
             }
         }
+        Instantiate(prizesParticleSystem, transform.position, Quaternion.identity);
     }
 
     public void OnStickCollide()
     {
-        var ps = Instantiate(pinataParticleSystem, transform.position, Quaternion.identity);
+        Instantiate(pinataParticleSystem, transform.position, Quaternion.identity);
         PlayHitSound();
         PushPinata();
     }

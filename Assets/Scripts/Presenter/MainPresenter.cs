@@ -16,8 +16,8 @@ public class MainPresenter : MonoBehaviour
 
     private void StickHitPinata()
     {
-        _pinataLogic.PinataHit();
         pinataView.OnStickCollide();
+        _pinataLogic.PinataHit();
     }
 
     private void OnDestroy()

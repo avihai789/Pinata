@@ -292,6 +292,7 @@ MonoBehaviour:
   - {fileID: 8858844392357377113}
   - {fileID: 3371485385803500665}
   pinataParticleSystem: {fileID: 6536069120966698074, guid: ca2b54850479544abb59903930c54b14, type: 3}
+  prizesParticleSystem: {fileID: 6536069120966698074, guid: 205472786941c4ad29110113312b2ced, type: 3}
   brokenPinataPartsParent: {fileID: 8438490919737008503}
 --- !u!82 &767627539042951665
 AudioSource:
