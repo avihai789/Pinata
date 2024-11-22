@@ -17,14 +17,18 @@ public class MainPresenter : MonoBehaviour
         _canvas.worldCamera = Camera.main;
         Destroy(_camera.gameObject);
         _pinataLogic = new PinataLogic(this);
-        _pinataView.Click += _pinataLogic.PinataHit;
-        _pinataView.Click += _stickPresenter.StickHit;
+        _stickPresenter.OnStickHit += StickHitPinata;
     }
-    
+
+    private void StickHitPinata()
+    {
+        _pinataLogic.PinataHit();
+        _pinataView.OnStickCollide();
+    }
+
     private void OnDestroy()
     {
-        _pinataView.Click -= _pinataLogic.PinataHit;
-        _pinataView.Click -= _stickPresenter.StickHit;
+        _stickPresenter.OnStickHit -= StickHitPinata;
     }
 
     public void PinataStateChanged()

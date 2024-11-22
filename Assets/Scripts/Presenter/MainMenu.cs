@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,26 +11,15 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        _ = AnimatePinataIcon(_pinataIcon, 2);
-        _ = AnimatePinataIcon(_StartButton, 1);
+        AnimateOpening(_pinataIcon, 2);
+        AnimateOpening(_StartButton, 1);
     }
 
-    private async UniTask AnimatePinataIcon(GameObject objectToScale, int scale)
+    private void AnimateOpening(GameObject objectToScale, int scale)
     {
-        var initialScale = Vector3.zero;
         var finalScale = Vector3.one * scale;
-        var elapsedTime = 0f;
-
-        objectToScale.transform.localScale = initialScale;
-
-        while (elapsedTime < animationDuration)
-        {
-            objectToScale.transform.localScale = Vector3.Lerp(initialScale, finalScale, elapsedTime / animationDuration);
-            elapsedTime += Time.deltaTime;
-            await UniTask.Yield();
-        }
-
-        objectToScale.transform.localScale = finalScale;
+        objectToScale.transform.localScale = Vector3.zero;
+        objectToScale.transform.DOScale(finalScale, animationDuration);
     }
 
     public void StartGame()

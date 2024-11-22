@@ -50,7 +50,7 @@ public class PinataLogic
     {
         _numberOfHits = 0;
         ChangeState(PinataState.NewPinata);
-        _ = OpenTimer(5);
+        OpenTimer(5).Forget();
     }
 
     private async UniTaskVoid OpenTimer(int seconds)

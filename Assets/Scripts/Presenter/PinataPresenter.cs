@@ -14,14 +14,11 @@ public class PinataView : MonoBehaviour
     [SerializeField] private GameObject[] brokenPinataParts;
     [SerializeField] private GameObject brokenPinataPartsParent;
     
-    private float pushForce = 10f;
+    private float pushForce = 30f;
     
     private int pinataSpriteIndex = 0;
     
     private bool _isExploded = false;
-    
-    
-    public event Action Click;
 
     public void SetPinataImage()
     {
@@ -51,13 +48,12 @@ public class PinataView : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public void OnStickCollide()
     {
         if (_isExploded) return;
         var ps = Instantiate(pinataParticleSystem, transform.position, Quaternion.identity);
         PlayHitSound();
         PushPinata();
-        Click?.Invoke();
     }
 
     private void PlayHitSound(AudioClip hitSound = null)
