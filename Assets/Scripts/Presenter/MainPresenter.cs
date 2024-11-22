@@ -1,35 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainPresenter : MonoBehaviour
 {
-    [SerializeField] private PinataView _pinataView;
-    [SerializeField] private StickPresenter _stickPresenter;
+    [SerializeField] private PinataView pinataView;
+    [SerializeField] private StickPresenter stickPresenter;
     
     private PinataLogic _pinataLogic;
     
     private void Start()
     {
         _pinataLogic = new PinataLogic(this);
-        _stickPresenter.OnStickHit += StickHitPinata;
+        stickPresenter.OnStickHit += StickHitPinata;
     }
 
     private void StickHitPinata()
     {
         _pinataLogic.PinataHit();
-        _pinataView.OnStickCollide();
+        pinataView.OnStickCollide();
     }
 
     private void OnDestroy()
     {
-        _stickPresenter.OnStickHit -= StickHitPinata;
+        stickPresenter.OnStickHit -= StickHitPinata;
     }
 
     public void PinataStateChanged()
     {
-        _pinataView.SetPinataImage();
+        pinataView.SetPinataImage();
     }
 
     public void RestartGame()

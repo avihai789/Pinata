@@ -274,19 +274,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ffe9dd474f34260ae00f41b97b9c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinataImage: {fileID: 5015428149266638155}
-  _pinataSprites:
-  - {fileID: 21300000, guid: 5d4c06f3b1d4e42f29a460f6619f98c2, type: 3}
-  - {fileID: 21300000, guid: cf9dde005a6a24d6da11d40684c65335, type: 3}
-  - {fileID: 21300000, guid: 9c86ae742b07e484595169ff362bd5a8, type: 3}
-  _audioSource: {fileID: 767627539042951665}
-  _hitSounds:
+  hitSounds:
   - {fileID: 8300000, guid: 41840439371864d339510652d792a5d6, type: 3}
   - {fileID: 8300000, guid: cca2892fe69d44f368fa38a229beef28, type: 3}
-  _explodeSound: {fileID: 8300000, guid: a53c11f335aa84c44bd9b1a5ce0149ac, type: 3}
-  _pinataRigidbody: {fileID: 4194875151910272079}
+  - {fileID: 8300000, guid: 5de9e2d04a97e44ce94da5e7008b7a50, type: 3}
+  explodeSound: {fileID: 8300000, guid: a53c11f335aa84c44bd9b1a5ce0149ac, type: 3}
+  pinataSprites:
+  - {fileID: 21300000, guid: cf9dde005a6a24d6da11d40684c65335, type: 3}
+  - {fileID: 21300000, guid: 9c86ae742b07e484595169ff362bd5a8, type: 3}
+  - {fileID: 21300000, guid: 5d4c06f3b1d4e42f29a460f6619f98c2, type: 3}
+  audioSource: {fileID: 767627539042951665}
+  pinataImage: {fileID: 5015428149266638155}
+  pinataRigidbody: {fileID: 4194875151910272079}
+  brokenPinataParts:
+  - {fileID: 460769705529605670}
+  - {fileID: 8858844392357377113}
+  - {fileID: 3371485385803500665}
   pinataParticleSystem: {fileID: 6536069120966698074, guid: ca2b54850479544abb59903930c54b14, type: 3}
-  brokenPinata: {fileID: 8438490919737008503}
+  brokenPinataPartsParent: {fileID: 8438490919737008503}
 --- !u!82 &767627539042951665
 AudioSource:
   m_ObjectHideFlags: 0
@@ -667,7 +672,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.80937505, y: 0.41250002}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

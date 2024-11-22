@@ -1,20 +1,20 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class StickPresenter : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private PolygonCollider2D collider2D;
-    private static readonly int Hit = Animator.StringToHash("Hit");
-    private Vector3 _mousePosition;
+    [SerializeField] private PolygonCollider2D polygonCollider;
+    
     public float moveSpeed = 0.1f;
+    private Vector3 _mousePosition;
+    private static readonly int Hit = Animator.StringToHash("Hit");
 
     public event Action OnStickHit ;
     
     private void StickHit()
     {
-        collider2D.enabled = true;
+        polygonCollider.enabled = true;
         animator.SetTrigger(Hit);
     }
     
@@ -24,7 +24,7 @@ public class StickPresenter : MonoBehaviour
         {
             OnStickHit?.Invoke();
         }
-        collider2D.enabled = false;
+        polygonCollider.enabled = false;
     }
 
     private void Update () {

@@ -363,8 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a8ed2fbd97845258fdcb33d1d5878d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinataView: {fileID: 1802690551}
-  _stickPresenter: {fileID: 3256154995144906600}
+  pinataView: {fileID: 1802690551}
+  stickPresenter: {fileID: 3256154995144906600}
 --- !u!1 &661821677
 GameObject:
   m_ObjectHideFlags: 0

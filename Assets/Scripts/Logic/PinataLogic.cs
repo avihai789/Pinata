@@ -1,6 +1,3 @@
-
-// Purpose: Contains the logic for the Piñata object.
-
 using Cysharp.Threading.Tasks;
 
 public class PinataLogic
@@ -9,7 +6,7 @@ public class PinataLogic
     private PinataState _pinataState;
     private readonly MainPresenter _mainPresenter;
 
-    enum PinataState
+    private enum PinataState
     {
         NewPinata,
         HalfBrokenPinata,

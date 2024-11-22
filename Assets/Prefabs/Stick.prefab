@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3406790935013875330}
-  collider2D: {fileID: 2478973731220918674}
+  polygonCollider: {fileID: 2478973731220918674}
   moveSpeed: 0.1
 --- !u!60 &2478973731220918674
 PolygonCollider2D:

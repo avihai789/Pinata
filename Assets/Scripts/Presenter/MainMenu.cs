@@ -1,20 +1,17 @@
-using System;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Logic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pinataIcon;
     [SerializeField] private Button startButton;
+    [SerializeField] private GameObject pinataIcon;
     [SerializeField] private GameObject sfxManager;
     [SerializeField] private float animationDuration = 1f;
 
-    void Start()
+    private void Start()
     {
         AnimateOpening(pinataIcon, 2);
         AnimateOpening(startButton.gameObject, 1);
@@ -38,7 +35,10 @@ public class MainMenu : MonoBehaviour
     {
         var finalScale = Vector3.one * scale;
         objectToScale.transform.localScale = Vector3.zero;
-        objectToScale.transform.DOScale(finalScale, animationDuration);
+        objectToScale.transform.DOScale(finalScale, animationDuration).OnComplete(() =>
+        {
+            startButton.interactable = true;
+        });
     }
 
     public void StartGame()

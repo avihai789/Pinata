@@ -1,41 +1,41 @@
-using System;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PinataView : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _pinataImage;
-    [SerializeField] private Sprite[] _pinataSprites;
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip[] _hitSounds;
-    [SerializeField] private AudioClip _explodeSound;
-    [SerializeField] private Rigidbody2D _pinataRigidbody;
-    [SerializeField] private GameObject pinataParticleSystem;
+    [SerializeField] private AudioClip[] hitSounds;
+    [SerializeField] private AudioClip explodeSound;
+    [SerializeField] private Sprite[] pinataSprites;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private SpriteRenderer pinataImage;
+    [SerializeField] private Rigidbody2D pinataRigidbody;
     [SerializeField] private GameObject[] brokenPinataParts;
+    [SerializeField] private GameObject pinataParticleSystem;
     [SerializeField] private GameObject brokenPinataPartsParent;
     
-    private float pushForce = 30f;
+    private readonly float _pushForce = 30f;
     
-    private int pinataSpriteIndex = 0;
+    private int _pinataSpriteIndex = 0;
     
     private bool _isExploded = false;
 
     public void SetPinataImage()
     {
-        pinataSpriteIndex++;
-        if (pinataSpriteIndex >= _pinataSprites.Length)
+        _pinataSpriteIndex++;
+        if (_pinataSpriteIndex >= pinataSprites.Length)
         {
             ExplodePinata();
-            _pinataImage.sprite = null;
+            pinataImage.sprite = null;
             _isExploded = true;
             return;
         }
-        _pinataImage.sprite = _pinataSprites[pinataSpriteIndex];
+        pinataImage.sprite = pinataSprites[_pinataSpriteIndex];
     }
 
     private void ExplodePinata()
     {
-        PlayHitSound(_explodeSound);
+        PlayHitSound(explodeSound);
         brokenPinataPartsParent.SetActive(true);
         foreach (var part in brokenPinataParts)
         {
@@ -43,7 +43,7 @@ public class PinataView : MonoBehaviour
             if (rb != null)
             {
                 var randomDirection = Random.insideUnitCircle.normalized;
-                rb.AddForce(randomDirection * pushForce/2, ForceMode2D.Impulse);
+                rb.AddForce(randomDirection * _pushForce/2, ForceMode2D.Impulse);
             }
         }
     }
@@ -58,13 +58,13 @@ public class PinataView : MonoBehaviour
 
     private void PlayHitSound(AudioClip hitSound = null)
     {
-        _audioSource.clip = hitSound != null ? hitSound : _hitSounds[Random.Range(0, _hitSounds.Length)];
-        _audioSource.Play();
+        audioSource.clip = hitSound != null ? hitSound : hitSounds[Random.Range(0, hitSounds.Length)];
+        audioSource.Play();
     }
     
     private void PushPinata()
     {
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        _pinataRigidbody.AddForce(randomDirection * pushForce, ForceMode2D.Impulse);
+        var randomDirection = Random.insideUnitCircle.normalized;
+        pinataRigidbody.AddForce(randomDirection * _pushForce, ForceMode2D.Impulse);
     }
 }
