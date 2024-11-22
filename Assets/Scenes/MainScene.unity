@@ -181,7 +181,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -365,8 +365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinataView: {fileID: 1802690551}
   _stickPresenter: {fileID: 3256154995144906600}
-  _camera: {fileID: 519420031}
-  _canvas: {fileID: 585496692}
 --- !u!1 &661821677
 GameObject:
   m_ObjectHideFlags: 0

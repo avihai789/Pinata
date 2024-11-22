@@ -725,8 +725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa95e75b070c041578739bde7f08cd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinataIcon: {fileID: 1556403541}
-  _StartButton: {fileID: 287322093}
+  pinataIcon: {fileID: 1556403541}
+  startButton: {fileID: 287322095}
+  sfxManager: {fileID: 193516652}
   animationDuration: 0.75
 --- !u!1 &661821677
 GameObject:

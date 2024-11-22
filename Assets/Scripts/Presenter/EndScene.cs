@@ -7,7 +7,6 @@ public class EndScene : MonoBehaviour
 {
     public void RestartGame()
     {
-        SceneManager.UnloadSceneAsync("MainMenu");
         SceneManager.LoadScene("MainMenu");
     }
 }

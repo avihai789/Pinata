@@ -7,15 +7,11 @@ public class MainPresenter : MonoBehaviour
 {
     [SerializeField] private PinataView _pinataView;
     [SerializeField] private StickPresenter _stickPresenter;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Canvas _canvas;
     
     private PinataLogic _pinataLogic;
     
     private void Start()
     {
-        _canvas.worldCamera = Camera.main;
-        Destroy(_camera.gameObject);
         _pinataLogic = new PinataLogic(this);
         _stickPresenter.OnStickHit += StickHitPinata;
     }
@@ -38,6 +34,6 @@ public class MainPresenter : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("EndScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("EndScene");
     }
 }
