@@ -38,27 +38,25 @@ public class PinataLogic
                 break;
             case 10:
                 ChangeState(PinataState.BrokenPinata);
-                ResetGame();
+                EndGame();
                 break;
         }
     }
 
-    private void ResetGame()
+    private void EndGame()
     {
-        _numberOfHits = 0;
-        ChangeState(PinataState.NewPinata);
         OpenTimer(5).Forget();
     }
 
     private async UniTaskVoid OpenTimer(int seconds)
     {
         await UniTask.Delay(seconds * 1000);
-        _mainPresenter.RestartGame();
+        _mainPresenter.EndGame();
     }
 
     private void ChangeState(PinataState pinataState)
     {
         _pinataState = pinataState;
-        _mainPresenter.PinataStateChanged();
+        _mainPresenter.PinataStateChanged((int)_pinataState);
     }
 }

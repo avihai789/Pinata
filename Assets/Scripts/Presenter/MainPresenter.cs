@@ -25,12 +25,12 @@ public class MainPresenter : MonoBehaviour
         stickPresenter.OnStickHit -= StickHitPinata;
     }
 
-    public void PinataStateChanged()
+    public void PinataStateChanged(int index)
     {
-        pinataView.SetPinataImage();
+        pinataView.SetPinataImage(index);
     }
 
-    public void RestartGame()
+    public void EndGame()
     {
         SceneManager.LoadScene("EndScene");
     }

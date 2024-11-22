@@ -284,6 +284,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9c86ae742b07e484595169ff362bd5a8, type: 3}
   - {fileID: 21300000, guid: 5d4c06f3b1d4e42f29a460f6619f98c2, type: 3}
   audioSource: {fileID: 767627539042951665}
+  pinataCollider: {fileID: 2481855134443882137}
   pinataImage: {fileID: 5015428149266638155}
   pinataRigidbody: {fileID: 4194875151910272079}
   brokenPinataParts:

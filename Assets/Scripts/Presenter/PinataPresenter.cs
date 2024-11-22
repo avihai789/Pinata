@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,29 +7,25 @@ public class PinataView : MonoBehaviour
     [SerializeField] private AudioClip explodeSound;
     [SerializeField] private Sprite[] pinataSprites;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Collider2D pinataCollider;
     [SerializeField] private SpriteRenderer pinataImage;
     [SerializeField] private Rigidbody2D pinataRigidbody;
     [SerializeField] private GameObject[] brokenPinataParts;
     [SerializeField] private GameObject pinataParticleSystem;
     [SerializeField] private GameObject brokenPinataPartsParent;
-    
-    private readonly float _pushForce = 30f;
-    
-    private int _pinataSpriteIndex = 0;
-    
-    private bool _isExploded = false;
 
-    public void SetPinataImage()
+    private const float PushForce = 10f;
+
+    public void SetPinataImage(int index)
     {
-        _pinataSpriteIndex++;
-        if (_pinataSpriteIndex >= pinataSprites.Length)
+        if (index >= pinataSprites.Length)
         {
             ExplodePinata();
             pinataImage.sprite = null;
-            _isExploded = true;
+            pinataCollider.enabled = false;
             return;
         }
-        pinataImage.sprite = pinataSprites[_pinataSpriteIndex];
+        pinataImage.sprite = pinataSprites[index];
     }
 
     private void ExplodePinata()
@@ -43,14 +38,13 @@ public class PinataView : MonoBehaviour
             if (rb != null)
             {
                 var randomDirection = Random.insideUnitCircle.normalized;
-                rb.AddForce(randomDirection * _pushForce/2, ForceMode2D.Impulse);
+                rb.AddForce(randomDirection * PushForce/2, ForceMode2D.Impulse);
             }
         }
     }
 
     public void OnStickCollide()
     {
-        if (_isExploded) return;
         var ps = Instantiate(pinataParticleSystem, transform.position, Quaternion.identity);
         PlayHitSound();
         PushPinata();
@@ -65,6 +59,6 @@ public class PinataView : MonoBehaviour
     private void PushPinata()
     {
         var randomDirection = Random.insideUnitCircle.normalized;
-        pinataRigidbody.AddForce(randomDirection * _pushForce, ForceMode2D.Impulse);
+        pinataRigidbody.AddForce(randomDirection * PushForce, ForceMode2D.Impulse);
     }
 }
