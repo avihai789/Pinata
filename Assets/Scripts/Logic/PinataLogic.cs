@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 
 public class PinataLogic
@@ -5,6 +6,9 @@ public class PinataLogic
     private int _numberOfHits;
     private PinataState _pinataState;
     private readonly MainPresenter _mainPresenter;
+    
+    public event Action<int> OnPinataHit;
+    public event Action<int> OnPinataStateChanged;
 
     private enum PinataState
     {
@@ -16,13 +20,14 @@ public class PinataLogic
     
     public PinataLogic(MainPresenter mainPresenter)
     {
-        this._mainPresenter = mainPresenter;
+        _mainPresenter = mainPresenter;
         _pinataState = PinataState.NewPinata;
     }
     
     public void PinataHit()
     {
         _numberOfHits++;
+        OnPinataHit?.Invoke(_numberOfHits);
         CheckHits();
     }
     
@@ -57,6 +62,6 @@ public class PinataLogic
     private void ChangeState(PinataState pinataState)
     {
         _pinataState = pinataState;
-        _mainPresenter.PinataStateChanged((int)_pinataState);
+        OnPinataStateChanged?.Invoke((int)_pinataState);
     }
 }
