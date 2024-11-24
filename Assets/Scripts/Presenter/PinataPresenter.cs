@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PinataView : MonoBehaviour
+public class PinataPresenter : MonoBehaviour
 {
     [SerializeField] private AudioClip[] hitSounds;
     [SerializeField] private AudioClip explodeSound;

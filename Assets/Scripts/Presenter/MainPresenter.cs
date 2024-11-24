@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MainPresenter : MonoBehaviour
 {
-    [SerializeField] private PinataView pinataView;
+    [SerializeField] private PinataPresenter pinataPresenter;
     [SerializeField] private StickPresenter stickPresenter;
     [SerializeField] private TextMeshProUGUI hitsCounterText;
     
@@ -20,7 +21,7 @@ public class MainPresenter : MonoBehaviour
 
     private void StickHitPinata()
     {
-        pinataView.OnStickCollide();
+        pinataPresenter.OnStickCollide();
         _pinataLogic.PinataHit();
     }
 
@@ -31,10 +32,10 @@ public class MainPresenter : MonoBehaviour
 
     private void PinataStateChanged(int index)
     {
-        pinataView.SetPinataImage(index);
+        pinataPresenter.SetPinataImage(index);
     }
-    
-    public void UpdateHitsCounter(int numOfHits)
+
+    private void UpdateHitsCounter(int numOfHits)
     {
         hitsCounterText.text = "Number of hits:" + numOfHits;
     }

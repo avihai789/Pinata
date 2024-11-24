@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a8ed2fbd97845258fdcb33d1d5878d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinataView: {fileID: 1802690551}
+  pinataPresenter: {fileID: 1802690551}
   stickPresenter: {fileID: 3256154995144906600}
   hitsCounterText: {fileID: 189765538}
 --- !u!1 &661821677
@@ -1301,6 +1301,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 5255827349898467170, guid: 5bc2bae0b67c2481d83ae01066ca0247, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 5255827349898467170, guid: 5bc2bae0b67c2481d83ae01066ca0247, type: 3}
+      propertyPath: pinataPresenter
+      value: 
+      objectReference: {fileID: 1802690551}
     - target: {fileID: 8457577275171616717, guid: 5bc2bae0b67c2481d83ae01066ca0247, type: 3}
       propertyPath: m_Name
       value: Stick
@@ -1326,7 +1334,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 448359753}
   - {fileID: 585496693}
-  - {fileID: 661821680}
+  - {fileID: 448359753}
   - {fileID: 3256154995144906599}
+  - {fileID: 661821680}

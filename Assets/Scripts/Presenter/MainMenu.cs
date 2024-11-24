@@ -13,8 +13,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        AnimateOpening(pinataIcon, 2);
-        AnimateOpening(startButton.gameObject, 1);
+        AnimateObject(pinataIcon, 2);
+        AnimateObject(startButton.gameObject, 1, true);
         SetSfxManager();
     }
 
@@ -31,13 +31,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    private void AnimateOpening(GameObject objectToScale, int scale)
+    private void AnimateObject(GameObject objectToScale, int scale, bool isButton = false)
     {
         var finalScale = Vector3.one * scale;
         objectToScale.transform.localScale = Vector3.zero;
         objectToScale.transform.DOScale(finalScale, animationDuration).OnComplete(() =>
         {
-            startButton.interactable = true;
+            if (isButton)
+            {
+                startButton.interactable = true;
+            }
         });
     }
 

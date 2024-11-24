@@ -50,7 +50,7 @@ public class PinataLogic
 
     private void EndGame()
     {
-        OpenTimer(5).Forget();
+        OpenTimer(3).Forget();
     }
 
     private async UniTaskVoid OpenTimer(int seconds)

@@ -5,6 +5,8 @@ public class StickPresenter : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private PolygonCollider2D polygonCollider;
+    [SerializeField] private PinataPresenter pinataPresenter;
+    [SerializeField] private Camera mainCamera;
     
     public float moveSpeed = 0.1f;
     private Vector3 _mousePosition;
@@ -20,7 +22,7 @@ public class StickPresenter : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PinataView>() != null)
+        if (collision.gameObject == pinataPresenter.gameObject)
         {
             OnStickHit?.Invoke();
         }
@@ -29,7 +31,7 @@ public class StickPresenter : MonoBehaviour
 
     private void Update () {
         _mousePosition = Input.mousePosition;
-        _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
+        _mousePosition = mainCamera.ScreenToWorldPoint(_mousePosition);
         transform.position = Vector2.Lerp(transform.position, _mousePosition, moveSpeed);
 
         if (Input.GetMouseButtonDown(0))
