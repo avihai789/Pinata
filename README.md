@@ -10,5 +10,18 @@ A fun and interactive mini-game developed in Unity! Smash the pinata and enjoy a
 - Developed using Unity to leverage powerful 2D game mechanics.  
 - Focused on intuitive controls and vibrant animations.  
 
+## 🎮 How to Play  
+### From Unity:  
+1. Open the **Main Menu** scene in Unity.  
+2. Select **1080x1920 resolution** for the best experience.  
+3. Run the game.  
+4. Use **left-click** to make the stick interact with the pinata.  
+5. Reach **10 hits** to break the pinata and enjoy the rewards!  
+
+### From Phone:  
+1. Launch the game on your mobile device.  
+2. Tap anywhere on the screen to make the stick interact with the pinata.  
+3. Reach **10 hits** to break the pinata and unlock the fun!  
+
 ## 📱 Best Experience  
 This game is optimized for **1080x1920 resolution**, making it ideal for mobile and portrait-oriented displays.
