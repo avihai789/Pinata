@@ -1,7 +1,6 @@
 using DG.Tweening;
 using Logic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour

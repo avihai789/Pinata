@@ -1,17 +1,15 @@
 using Logic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class MainPresenter : MonoBehaviour
 {
     [SerializeField] private PinataPresenter pinataPresenter;
     [SerializeField] private StickPresenter stickPresenter;
     [SerializeField] private TextMeshProUGUI hitsCounterText;
-    
+
     private PinataLogic _pinataLogic;
-    
+
     private void Start()
     {
         _pinataLogic = new PinataLogic(this);

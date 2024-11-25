@@ -10,7 +10,7 @@ namespace Logic
             MainScene,
             EndScene
         }
-        
+
         public static void LoadScene(ScenesEnum scene)
         {
             SceneManager.LoadScene(scene.ToString());

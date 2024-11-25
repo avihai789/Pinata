@@ -26,6 +26,7 @@ public class PinataPresenter : MonoBehaviour
             pinataCollider.enabled = false;
             return;
         }
+
         pinataImage.sprite = pinataSprites[index];
     }
 
@@ -39,9 +40,10 @@ public class PinataPresenter : MonoBehaviour
             if (rb != null)
             {
                 var randomDirection = Random.insideUnitCircle.normalized;
-                rb.AddForce(randomDirection * PushForce/2, ForceMode2D.Impulse);
+                rb.AddForce(randomDirection * PushForce / 2, ForceMode2D.Impulse);
             }
         }
+
         Instantiate(prizesParticleSystem, transform.position, Quaternion.identity);
     }
 
@@ -57,7 +59,7 @@ public class PinataPresenter : MonoBehaviour
         audioSource.clip = hitSound != null ? hitSound : hitSounds[Random.Range(0, hitSounds.Length)];
         audioSource.Play();
     }
-    
+
     private void PushPinata()
     {
         var randomDirection = Random.insideUnitCircle.normalized;

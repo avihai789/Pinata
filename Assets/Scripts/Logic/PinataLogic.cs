@@ -5,13 +5,12 @@ public class PinataLogic
 {
     private int _numberOfHits;
     private PinataState _pinataState;
-    
+
     public event Action<int> OnPinataHit;
     public event Action<int> OnPinataStateChanged;
-    
+
     public event Action OnEndGame;
-    
-    
+
 
     private enum PinataState
     {
@@ -20,19 +19,19 @@ public class PinataLogic
         AlmostBrokenPinata,
         BrokenPinata
     }
-    
+
     public PinataLogic(MainPresenter mainPresenter)
     {
         _pinataState = PinataState.NewPinata;
     }
-    
+
     public void PinataHit()
     {
         _numberOfHits++;
         OnPinataHit?.Invoke(_numberOfHits);
         CheckHits();
     }
-    
+
     private void CheckHits()
     {
         switch (_numberOfHits)
