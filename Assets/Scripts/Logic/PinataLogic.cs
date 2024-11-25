@@ -5,10 +5,13 @@ public class PinataLogic
 {
     private int _numberOfHits;
     private PinataState _pinataState;
-    private readonly MainPresenter _mainPresenter;
     
     public event Action<int> OnPinataHit;
     public event Action<int> OnPinataStateChanged;
+    
+    public event Action OnEndGame;
+    
+    
 
     private enum PinataState
     {
@@ -20,7 +23,6 @@ public class PinataLogic
     
     public PinataLogic(MainPresenter mainPresenter)
     {
-        _mainPresenter = mainPresenter;
         _pinataState = PinataState.NewPinata;
     }
     
@@ -56,7 +58,7 @@ public class PinataLogic
     private async UniTaskVoid OpenTimer(int seconds)
     {
         await UniTask.Delay(seconds * 1000);
-        _mainPresenter.EndGame();
+        OnEndGame?.Invoke();
     }
 
     private void ChangeState(PinataState pinataState)

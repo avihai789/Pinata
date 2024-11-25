@@ -18,6 +18,7 @@ public class MainPresenter : MonoBehaviour
         stickPresenter.OnStickHit += StickHitPinata;
         _pinataLogic.OnPinataHit += UpdateHitsCounter;
         _pinataLogic.OnPinataStateChanged += PinataStateChanged;
+        _pinataLogic.OnEndGame += EndGame;
     }
 
     private void StickHitPinata()
@@ -31,6 +32,7 @@ public class MainPresenter : MonoBehaviour
         stickPresenter.OnStickHit -= StickHitPinata;
         _pinataLogic.OnPinataHit -= UpdateHitsCounter;
         _pinataLogic.OnPinataStateChanged -= PinataStateChanged;
+        _pinataLogic.OnEndGame -= EndGame;
     }
 
     private void PinataStateChanged(int index)
