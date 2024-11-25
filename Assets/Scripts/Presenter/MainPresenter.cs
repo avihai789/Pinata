@@ -28,6 +28,8 @@ public class MainPresenter : MonoBehaviour
     private void OnDestroy()
     {
         stickPresenter.OnStickHit -= StickHitPinata;
+        _pinataLogic.OnPinataHit -= UpdateHitsCounter;
+        _pinataLogic.OnPinataStateChanged -= PinataStateChanged;
     }
 
     private void PinataStateChanged(int index)
