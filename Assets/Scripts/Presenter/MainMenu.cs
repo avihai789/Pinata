@@ -47,6 +47,6 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         startButton.interactable = false;
-        SceneManager.LoadScene("MainScene");
+        ScenesManager.LoadScene(ScenesManager.ScenesEnum.MainScene);
     }
 }

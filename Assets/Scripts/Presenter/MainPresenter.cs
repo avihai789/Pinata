@@ -1,3 +1,4 @@
+using Logic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,11 +40,11 @@ public class MainPresenter : MonoBehaviour
 
     private void UpdateHitsCounter(int numOfHits)
     {
-        hitsCounterText.text = "Number of hits:" + numOfHits;
+        hitsCounterText.text = $"Number of hits:{numOfHits}";
     }
 
     public void EndGame()
     {
-        SceneManager.LoadScene("EndScene");
+        ScenesManager.LoadScene(ScenesManager.ScenesEnum.EndScene);
     }
 }
